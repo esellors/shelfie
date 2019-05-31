@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 
 class Form extends Component {
    constructor(props) {
@@ -6,12 +7,21 @@ class Form extends Component {
       this.state = {
          name: '',
          price: 0,
-         img: ''
+         image: ''
       }
       this.updateName = this.updateName.bind(this);
       this.updatePrice = this.updatePrice.bind(this);
-      this.updateImg = this.updateImg.bind(this);
+      this.updateImage = this.updateImage.bind(this);
       this.clearInputs = this.clearInputs.bind(this);
+   }
+   addItem(e) {
+      e.preventDefault();
+      axios.post('/api/product', this.state)
+         .then(() => {
+            this.props.getInventory();
+            this.clearInputs();
+         })
+         .catch(err => console.log(err));
    }
    updateName(e) {
       let userInput = e.target.value;
@@ -25,10 +35,10 @@ class Form extends Component {
          price: userInput
       })
    }
-   updateImg(e) {
+   updateImage(e) {
       let userInput = e.target.value;
       this.setState({
-         img: userInput
+         image: userInput
       })
    }
    clearInputs(e) {
@@ -37,7 +47,7 @@ class Form extends Component {
       this.setState({
          name: '',
          price: 0,
-         img: ''
+         image: ''
       });
    }
    render() {
@@ -49,7 +59,7 @@ class Form extends Component {
                   name='input_img' 
                   id='input_img' 
                   type='text' 
-                  onChange={e => this.updateImg(e)}
+                  onChange={e => this.updateImage(e)}
                />
                <label htmlFor='input_name'>Product Name:</label>
                <input 
@@ -67,7 +77,7 @@ class Form extends Component {
                />
                <div id='input_buttons'>
                   <button onClick={e => this.clearInputs(e)}>Cancel</button>
-                  <button>Add to Inventory</button>
+                  <button onClick={e => this.addItem(e)}>Add to Inventory</button>
                </div>
             </form>
          </div>
