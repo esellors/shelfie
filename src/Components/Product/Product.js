@@ -14,6 +14,9 @@ class Product extends Component {
                <div className="product_details">
                   <p>{name}</p>
                   <p>${price}</p>
+                  <span>
+                     <button name={name} onClick={e => this.props.deleteItem(e)}>Delete</button>
+                  </span>
                </div>
             </div>
          </>

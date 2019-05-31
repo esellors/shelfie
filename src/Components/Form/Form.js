@@ -14,6 +14,10 @@ class Form extends Component {
       this.updateImage = this.updateImage.bind(this);
       this.clearInputs = this.clearInputs.bind(this);
    }
+   componentDidUpdate(e) {
+
+
+   }
    addItem(e) {
       e.preventDefault();
       axios.post('/api/product', this.state)
