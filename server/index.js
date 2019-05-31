@@ -10,7 +10,7 @@ massive(CONNECTION_STRING).then(db => {
    console.log('db linked');
 })
 
-
+app.get('/api/inventory', controller.fetchInventory);
 
 
 
