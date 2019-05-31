@@ -6,11 +6,11 @@ class Form extends Component {
       this.state = {
          name: '',
          price: 0,
-         imgurl: ''
+         img: ''
       }
       this.updateName = this.updateName.bind(this);
       this.updatePrice = this.updatePrice.bind(this);
-      this.updateImgurl = this.updateImgurl.bind(this);
+      this.updateImg = this.updateImg.bind(this);
       this.clearInputs = this.clearInputs.bind(this);
    }
    updateName(e) {
@@ -25,10 +25,10 @@ class Form extends Component {
          price: userInput
       })
    }
-   updateImgurl(e) {
+   updateImg(e) {
       let userInput = e.target.value;
       this.setState({
-         imgurl: userInput
+         img: userInput
       })
    }
    clearInputs(e) {
@@ -37,7 +37,7 @@ class Form extends Component {
       this.setState({
          name: '',
          price: 0,
-         imgurl: ''
+         img: ''
       });
    }
    render() {
@@ -49,7 +49,7 @@ class Form extends Component {
                   name='input_img' 
                   id='input_img' 
                   type='text' 
-                  onChange={e => this.updateImgurl(e)}
+                  onChange={e => this.updateImg(e)}
                />
                <label htmlFor='input_name'>Product Name:</label>
                <input 
