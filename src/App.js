@@ -6,7 +6,7 @@ import Form from './Components/Form/Form';
 
 function App() {
   return (
-    <div>
+    <>
 
       <Header />
       
@@ -14,7 +14,7 @@ function App() {
 
       <Form />      
 
-    </div>
+    </>
   );
 }
 
